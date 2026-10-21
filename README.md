@@ -1,9 +1,5 @@
-# Project Name
+# Odin project: Library
 
-A brief description of what this project does.
+A library app built for The Odin Project, focusing on JavaScript objects and object constructors.
 
-## Built With
 
-- HTML5
-- CSS3
-- JavaScript
