@@ -40,3 +40,12 @@ myLibrary.forEach((book, index) => {
   listBooks.appendChild(bookLi);
 
 });
+
+//DOM selector for the new book button and the form
+const newBookBtn = document.querySelector ('#new-book-btn');
+const bookForm = document.querySelector("#book-form");
+
+//event listener for the new book button to toggle the form to be hidden/show
+newBookBtn.addEventListener('click', () =>{
+  bookForm.classList.toggle('hidden');
+})

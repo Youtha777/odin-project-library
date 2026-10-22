@@ -22,3 +22,7 @@ ul {
   margin-left: 35px;
 }
 
+/* to toggle the form */
+.hidden{
+  display: none;
+}
