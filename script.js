@@ -14,6 +14,14 @@ function Book(title, author, pages, isRead){
   this.isRead = isRead; 
 }
 
+Book.prototype.hasRead = function () {
+  if (!this.isRead){
+    return "have not read";
+  } else{
+    return "have read";
+  }
+}
+
 //function to add a new book to the library array
 function addBookToLibrary(title, author, pages, isRead){
   let newBook = new Book(title, author, pages, isRead);
@@ -37,12 +45,21 @@ addBookToLibrary("Harry Potter III", "R.J Rowling", 451, false)
 myLibrary.forEach((book, index) => {
   //set a variable to be the li tag to append to the ul later
   const bookLi = document.createElement("li");
+  const removeBtn = document.createElement('button');
+  const readToggleBtn = document.createElement('button');
+  const readStatus = document.createElement ('p');
+
+  readStatus.textContent = (`Read Status: ${book.hasRead()}`);
+  readToggleBtn.classList = "readToggleBtn";
   
   //alter the text on the li tag to display on the web page
   bookLi.textContent = `${book.title}`;
+  removeBtn.textContent = "Remove";
 
   //append the book onto ul.
   listBooks.appendChild(bookLi);
+  bookLi.appendChild(readStatus);
+  bookLi.appendChild(removeBtn);
 
 });
 
@@ -81,13 +98,41 @@ submitBook.addEventListener('click', (event) =>{
   myLibrary.forEach((book, index) => {
   //set a variable to be the li tag to append to the ul later
   const bookLi = document.createElement("li");
+  const removeBtn = document.createElement('button');
+  const readToggleBtn = document.createElement('button');
+  const readStatus = document.createElement ('p');
+  
+
+  readStatus.textContent = (`Read Status: ${book.hasRead()}`);
   
   //alter the text on the li tag to display on the web page
   bookLi.textContent = `${book.title}`;
+  removeBtn.textContent = "Remove";
+  readToggleBtn.textContent = "Read/Not Read";
+
+  removeBtn.id = book.id;
+
+  removeBtn.addEventListener('click', (event) => {
+    const index = myLibrary.findIndex(book => book.id === event.currentTarget.id)
+
+    myLibrary.splice(index, 1);
+  })
+
+  readToggleBtn.addEventListener('click', () => {
+    if (book.isRead){
+      book.isRead = false;
+      readStatus.textContent = (`Read Status: ${book.hasRead()}`);
+    } else{
+      book.isRead = true;
+      readStatus.textContent = (`Read Status: ${book.hasRead()}`);
+    }
+  })
 
   //append the book onto ul.
   listBooks.appendChild(bookLi);
-
+  bookLi.appendChild(readStatus);
+  bookLi.appendChild(readToggleBtn);
+  bookLi.appendChild(removeBtn);
 });
   
   //to prevent the defualt form submission to a server
