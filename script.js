@@ -49,6 +49,8 @@ function refreshMyLibrary(myLibrary) {
     const removeBtn = document.createElement('button');
     const readToggleBtn = document.createElement('button');
     const readStatus = document.createElement ('p');
+    const author = document.createElement('p');
+    const pages = document.createElement('p');
 
     readStatus.textContent = (`Read Status: ${book.hasRead()}`);
     bookLi.classList = "book-card";
@@ -57,6 +59,8 @@ function refreshMyLibrary(myLibrary) {
     
     //alter the text on the li tag to display on the web page
     bookLi.textContent = `${book.title}`;
+    author.textContent = `Author: ${book.author}`;
+    pages.textContent = `Pages: ${book.pages}`;
     removeBtn.textContent = "Remove";
     removeBtn.id = book.id;
 
@@ -80,6 +84,8 @@ function refreshMyLibrary(myLibrary) {
 
     //append the book onto ul.
     listBooks.appendChild(bookLi);
+    bookLi.appendChild(author);
+    bookLi.appendChild(pages);
     bookLi.appendChild(readStatus);
     bookLi.appendChild(readToggleBtn);
     bookLi.appendChild(removeBtn);

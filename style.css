@@ -4,26 +4,48 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: #e6e5e2;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Narnoor", Arial, Helvetica, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
 }
 
-.grid-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: 250px;
+img{
+  margin-left: 25px;
+  text-align: center;
+  width: 25px;
+  height: 25px;
 }
 
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 250px;
+  max-width:2400px;
+  width: 90%;
+  align-items: center;
+  
+}
+
+
+header{
+ margin-top: 25px;
+  padding: 0;
+  font-family: "Lugrasimo", Arial, Helvetica, sans-serif, cursive;
+  height: 100px;
+ grid-column: 1 / -1;
+ justify-items: center; 
+ font-size: 2em;
+}
 
 .book-cards {
   margin-left: 35px;
   grid-column: span 3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 350px);
   grid-auto-rows: 1fr;
   gap: 10px;
   justify-items: center;
@@ -33,6 +55,41 @@ li {
   list-style: none;
 }
 
+.new-book-btn{
+  justify-self: start; /* or center / end */
+  align-self: start;   /* or center / end */
+  margin-left: 35px;
+  /* your existing button styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#book-form{
+  grid-column: 1 / -1;
+  margin-left: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+input[type="text"],
+input[type="number"] {
+  margin-top: 25px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+label{
+  margin-left: 50px;
+}
 
 .book-card{
   display: grid;
@@ -52,11 +109,6 @@ li {
   margin-top: 250px;
 }
 
-.form-container{
-  margin-left: 20px;
-  margin-top: 25px;
-}
-
 button{
   display: inline-flex;
   align-items: center;
@@ -72,7 +124,7 @@ button{
   border-radius: 8px;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px 0 rgba(15, 9, 9, 0.05);
   transition: all 0.15s ease-in-out;
 }
 
@@ -80,4 +132,8 @@ button:hover {
   background-color: #8fa0ce;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   transform: translateY(-1px);
+}
+
+.new-book-submit-btn{
+  margin-top: 10px;
 }
